@@ -2,7 +2,6 @@
 using Core.Interfaces;
 using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 
 namespace Infrastructure.Data
 {
@@ -33,6 +32,11 @@ namespace Infrastructure.Data
         public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> specification)
         {
             return await ApplySpecification(specification).ToListAsync();
+        }
+
+        public async Task<int> CountAsync(ISpecification<T> specification)
+        {
+            return await ApplySpecification(specification).CountAsync();
         }
 
         private IQueryable<T> ApplySpecification(ISpecification<T> spec)
