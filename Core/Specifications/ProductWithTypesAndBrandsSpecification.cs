@@ -6,6 +6,7 @@ namespace Core.Specifications
     {
         public ProductWithTypesAndBrandsSpecification(ProductSpecificationParams productParams) 
             : base(x => 
+                (string.IsNullOrEmpty(productParams.Search) || x.Name.ToLower().Contains(productParams.Search)) &&
                 (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId) &&
                 (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId)
             )
@@ -29,8 +30,6 @@ namespace Core.Specifications
                         AddOrderBy(x => x.Name);
                         break;
                 }
-
-                // Todo: Paginação não funciona. Página 2 é a mesma da 1
             }
         }
 
