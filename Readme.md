@@ -1,7 +1,7 @@
-# .NET and Angular course
+# .NET Core and Angular course
 
 ## Frameworks and versions:
-.NET 7
+.NET Core 7
 SQLite
 Angular 14.2
 Bootstrap
